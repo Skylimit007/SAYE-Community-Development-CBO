@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAYE Community Development CBO</title>
+  <meta name="description" content="Portfolio website template for SAYE Community Development CBO, a community-based organization serving North Kamagak, Rachuonyo South, Homa Bay County." />
+  <style>
+    :root{
+      --primary:#177245;
+      --primary-dark:#0e5835;
+      --accent:#2b9cc9;
+      --bg:#f7faf8;
+      --card:#ffffff;
+      --text:#183028;
+      --muted:#5b6f67;
+      --line:#dfe9e4;
+      --shadow:0 18px 45px rgba(11,39,28,.10);
+      --radius:22px;
+      --container:min(1120px, 92vw);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#fbfefc 0%, #f3f8f5 100%);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:var(--container);margin:auto}
+    .pill{
+      display:inline-flex;align-items:center;gap:.5rem;
+      padding:.55rem .95rem;border-radius:999px;
+      background:#ecf8f2;color:var(--primary-dark);
+      border:1px solid #d6eee1;font-size:.92rem;font-weight:700;
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      gap:.6rem;padding:.95rem 1.2rem;border-radius:14px;
+      border:1px solid transparent;font-weight:700;
+      transition:.2s ease;cursor:pointer;
+    }
+    .btn-primary{background:var(--primary);color:#fff}
+    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px)}
+    .btn-secondary{background:#fff;color:var(--primary-dark);border-color:#d9e7df}
+    .btn-secondary:hover{background:#f5faf7}
+    .section{padding:84px 0}
+    .section-title{
+      font-size:clamp(1.8rem, 2.8vw, 2.6rem);
+      margin:0 0 10px;font-weight:800;line-height:1.15;
+    }
+    .section-subtitle{
+      color:var(--muted);max-width:760px;margin:0 0 34px;
+    }
+    header{
+      position:sticky;top:0;z-index:40;
+      backdrop-filter:blur(14px);
+      background:rgba(255,255,255,.88);
+      border-bottom:1px solid rgba(223,233,228,.9);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:20px;min-height:78px;
+    }
+    .brand{display:flex;align-items:center;gap:14px;min-width:0}
+    .brand img{
+      width:58px;height:58px;border-radius:16px;object-fit:cover;
+      background:#fff;border:1px solid #dce8e1;padding:4px;
+      box-shadow:0 8px 24px rgba(21,74,48,.08);
+    }
+    .brand h1{
+      font-size:1rem;line-height:1.15;margin:0;font-weight:800;
+      letter-spacing:.2px;
+    }
+    .brand span{display:block;color:var(--muted);font-size:.88rem;font-weight:600}
+    .nav-links{
+      display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+    }
+    .nav-links a{
+      color:#24463a;font-weight:700;font-size:.95rem;
+    }
+    .nav-links a:hover{color:var(--primary)}
+    .menu-toggle{
+      display:none;border:1px solid #d7e5dc;background:#fff;border-radius:12px;
+      width:48px;height:48px;font-size:1.2rem;cursor:pointer;
+    }
+
+    .hero{
+      padding:54px 0 42px;
+      position:relative;overflow:hidden;
+    }
+    .hero::before{
+      content:"";position:absolute;inset:auto -10% -60% auto;
+      width:420px;height:420px;border-radius:50%;
+      background:radial-gradient(circle, rgba(43,156,201,.12), rgba(23,114,69,0));
+      filter:blur(10px);
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1.12fr .88fr;gap:34px;align-items:center;
+    }
+    .hero-copy h2{
+      font-size:clamp(2.2rem, 5vw, 4.4rem);
+      line-height:1.05;margin:.85rem 0 14px;font-weight:900;
+      letter-spacing:-1.2px;
+    }
+    .hero-copy p{
+      font-size:1.08rem;color:var(--muted);max-width:680px;margin:0 0 24px;
+    }
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+    .hero-stats{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px;
+    }
+    .stat{
+      background:rgba(255,255,255,.82);border:1px solid #e0ebe5;
+      border-radius:18px;padding:18px 16px;box-shadow:var(--shadow);
+    }
+    .stat strong{display:block;font-size:1.25rem}
+    .stat span{color:var(--muted);font-size:.92rem}
+    .hero-card{
+      background:linear-gradient(180deg,#ffffff 0%, #f5fbf7 100%);
+      border:1px solid #dfebe4;border-radius:28px;padding:16px;
+      box-shadow:var(--shadow);
+    }
+    .hero-card .image-wrap{
+      border-radius:20px;overflow:hidden;background:#eef5f1;
+      border:1px solid #e1ece5;
+    }
+    .hero-card img{width:100%;height:100%;object-fit:cover}
+    .hero-note{
+      display:grid;grid-template-columns:56px 1fr;gap:14px;
+      margin-top:16px;padding:16px;border-radius:18px;
+      background:#fff;border:1px solid #e0ebe5;
+    }
+    .icon-badge{
+      width:56px;height:56px;border-radius:16px;
+      display:grid;place-items:center;
+      background:#edf8f2;color:var(--primary);font-size:1.4rem;font-weight:800;
+    }
+
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .card{
+      background:var(--card);border:1px solid var(--line);
+      border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);
+    }
+    .about-list{
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px;
+    }
+    .about-item{
+      background:#f5faf7;border:1px solid #e0ebe5;border-radius:18px;padding:16px;
+    }
+    .about-item small{display:block;color:var(--muted);font-weight:700;margin-bottom:4px}
+    .about-item strong{display:block;font-size:1rem}
+    .quote{
+      border-left:4px solid var(--primary);padding-left:18px;
+      color:#234838;font-weight:700;margin:18px 0 0;
+    }
+
+    .program-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+    }
+    .program-card{
+      background:#fff;border:1px solid #deebe3;border-radius:22px;
+      padding:22px;box-shadow:var(--shadow);
+      transition:.2s ease;
+    }
+    .program-card:hover{transform:translateY(-4px)}
+    .program-icon{
+      width:56px;height:56px;border-radius:16px;display:grid;place-items:center;
+      background:#edf8f2;font-size:1.35rem;margin-bottom:14px;
+    }
+    .program-card h3{margin:0 0 8px;font-size:1.1rem}
+    .program-card p{margin:0;color:var(--muted);font-size:.96rem}
+
+    .impact{
+      display:grid;grid-template-columns:1.08fr .92fr;gap:24px;align-items:start;
+    }
+    .impact-cards{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:16px;
+    }
+    .metric{
+      padding:20px;border-radius:20px;background:#fff;border:1px solid #deebe3;box-shadow:var(--shadow);
+    }
+    .metric strong{display:block;font-size:2rem;line-height:1}
+    .metric span{display:block;color:var(--muted);margin-top:8px}
+    .timeline{
+      display:grid;gap:14px;
+    }
+    .timeline-item{
+      padding:16px 18px;border-radius:18px;background:#fff;border:1px solid #deebe3;
+      box-shadow:var(--shadow);
+    }
+    .timeline-item strong{display:block;margin-bottom:6px}
+
+    .gallery-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+    }
+    .gallery-card{
+      background:#fff;border:1px solid #deebe3;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);
+    }
+    .gallery-media{
+      aspect-ratio: 4 / 3;
+      background:linear-gradient(135deg,#dff2e7,#eef7f2);
+      display:grid;place-items:center;color:#346452;font-weight:800;
+    }
+    .gallery-media img{width:100%;height:100%;object-fit:cover}
+    .gallery-caption{padding:14px 16px}
+    .gallery-caption strong{display:block;margin-bottom:4px}
+    .gallery-caption span{color:var(--muted);font-size:.94rem}
+
+    .docs-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+    }
+    .doc-card{
+      background:#fff;border:1px solid #deebe3;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);
+      display:flex;flex-direction:column;
+    }
+    .doc-card img{
+      aspect-ratio: 4 / 3;object-fit:cover;background:#f2f7f4;
+      border-bottom:1px solid #e2ece6;
+    }
+    .doc-card .doc-body{padding:18px}
+    .doc-card h3{margin:0 0 8px;font-size:1.08rem}
+    .doc-card p{margin:0 0 16px;color:var(--muted);font-size:.96rem}
+
+    .leaders{
+      display:grid;grid-template-columns:repeat(5,1fr);gap:16px;
+    }
+    .leader{
+      text-align:center;background:#fff;border:1px solid #deebe3;border-radius:22px;padding:18px;box-shadow:var(--shadow);
+    }
+    .avatar{
+      width:74px;height:74px;border-radius:50%;margin:0 auto 12px;
+      display:grid;place-items:center;background:#eaf7f0;color:var(--primary-dark);
+      font-weight:900;font-size:1.4rem;
+    }
+    .leader strong{display:block}
+    .leader span{display:block;color:var(--muted);font-size:.94rem}
+    .leader em{display:block;margin-top:6px;font-style:normal;color:#8aa097;font-size:.88rem}
+
+    .contact-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:24px;
+    }
+    .contact-list{
+      display:grid;gap:14px;margin-top:18px;
+    }
+    .contact-item{
+      display:grid;grid-template-columns:54px 1fr;gap:14px;
+      align-items:start;padding:16px;border-radius:18px;background:#f6fbf8;border:1px solid #e0ebe5;
+    }
+    .contact-item .icon-badge{width:54px;height:54px}
+    form{
+      display:grid;gap:14px;
+    }
+    input, textarea{
+      width:100%;padding:14px 15px;border-radius:14px;border:1px solid #d7e6dd;
+      font:inherit;background:#fff;color:var(--text);
+    }
+    textarea{min-height:140px;resize:vertical}
+    .form-note{color:var(--muted);font-size:.92rem;margin-top:8px}
+
+    footer{
+      padding:30px 0 44px;border-top:1px solid #dde8e2;background:#fcfefd;
+    }
+    .footer-grid{
+      display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap;
+    }
+    .footer-links{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted)}
+    .muted{color:var(--muted)}
+
+    @media (max-width: 1000px){
+      .hero-grid,.impact,.grid-2,.contact-grid{grid-template-columns:1fr}
+      .program-grid,.docs-grid,.gallery-grid{grid-template-columns:repeat(2,1fr)}
+      .leaders{grid-template-columns:repeat(3,1fr)}
+    }
+    @media (max-width: 760px){
+      .menu-toggle{display:inline-grid;place-items:center}
+      .nav-links{
+        position:absolute;top:78px;left:0;right:0;background:#fff;border-bottom:1px solid #dde8e2;
+        padding:14px var(--side-pad, 4vw) 18px;display:none;flex-direction:column;align-items:flex-start;
+      }
+      .nav-links.open{display:flex}
+      .hero-stats,.about-list,.impact-cards,.program-grid,.docs-grid,.gallery-grid,.leaders{grid-template-columns:1fr}
+      .brand h1{font-size:.98rem}
+      .section{padding:68px 0}
+      .hero{padding-top:30px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <img src="assets/logo.jpg" alt="SAYE Community Development Group logo" />
+        <div>
+          <h1>SAYE Community Development CBO</h1>
+          <span>North Kamagak, Rachuonyo South, Homa Bay County</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#impact">Impact</a>
+        <a href="#documents">Documents</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="pill">Registered Community Based Organisation</span>
+          <h2>Empowering community growth through agriculture, sanitation, and social support.</h2>
+          <p>
+            SAYE Community Development CBO is a community-based organisation serving North Kamagak,
+            Rachuonyo South, Homa Bay County. We work to improve livelihoods through sustainable farming,
+            environmental care, sanitation initiatives, and support for vulnerable children and elderly persons.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#programs">Explore Our Work</a>
+            <a class="btn btn-secondary" href="#contact">Partner or Contact Us</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>07 Apr 2025</strong>
+              <span>Registration date</span>
+            </div>
+            <div class="stat">
+              <strong>North Kamagak</strong>
+              <span>Primary area of work</span>
+            </div>
+            <div class="stat">
+              <strong>6+ focus areas</strong>
+              <span>Community programs</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="image-wrap">
+            <img src="assets/brochure.jpg" alt="SAYE Community Development CBO brochure" />
+          </div>
+          <div class="hero-note">
+            <div class="icon-badge">✓</div>
+            <div>
+              <strong>Built for trust and visibility</strong>
+              <div class="muted">
+                This template showcases your story, documents, key programs, leadership, and contact details
+                in one clean portfolio website.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <span class="pill">About the organisation</span>
+        <h2 class="section-title">A community organisation rooted in service and practical development.</h2>
+        <p class="section-subtitle">
+          This section is based on the information you shared and can be edited later with more detailed project,
+          donor, or beneficiary information.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Who we are</h3>
+            <p>
+              SAYE Community Development CBO is a locally registered organisation focused on uplifting the community
+              through productive farming, environmental stewardship, sanitation, and social support initiatives.
+              The organisation exists to bring people together, support vulnerable households, and create sustainable
+              opportunities for better livelihoods.
+            </p>
+            <p class="quote">
+              “Together, we grow stronger communities through cooperation, dignity, and practical action.”
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Key profile details</h3>
+            <div class="about-list">
+              <div class="about-item">
+                <small>Official name</small>
+                <strong>SAYE Community Development CBO</strong>
+              </div>
+              <div class="about-item">
+                <small>County</small>
+                <strong>Homa Bay</strong>
+              </div>
+              <div class="about-item">
+                <small>Area</small>
+                <strong>North Kamagak, Rachuonyo South</strong>
+              </div>
+              <div class="about-item">
+                <small>Type</small>
+                <strong>Community Based Organisation</strong>
+              </div>
+              <div class="about-item">
+                <small>Registration date</small>
+                <strong>07 April 2025</strong>
+              </div>
+              <div class="about-item">
+                <small>Phone</small>
+                <strong>0725 588 590 / 0728 478 599</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:24px">
+          <div class="card">
+            <h3>Mission</h3>
+            <p>
+              To improve the welfare of community members through sustainable development activities,
+              environmental conservation, sanitation, and support programs that strengthen households and livelihoods.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Vision</h3>
+            <p>
+              A self-reliant, healthy, and empowered community where people work together to create
+              sustainable livelihoods and protect the wellbeing of vulnerable groups.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="programs" style="background:linear-gradient(180deg, rgba(237,248,242,.55), rgba(247,250,248,0));">
+      <div class="container">
+        <span class="pill">Programs and focus areas</span>
+        <h2 class="section-title">What SAYE Community Development CBO does</h2>
+        <p class="section-subtitle">
+          These program areas reflect the brochure and constitution you shared. You can expand each card later with
+          photos, outcomes, and project descriptions.
+        </p>
+
+        <div class="program-grid">
+          <article class="program-card">
+            <div class="program-icon">🌱</div>
+            <h3>Tree Nurseries & Agroforestry</h3>
+            <p>Promoting tree planting, environmental conservation, and agroforestry practices that improve land productivity and resilience.</p>
+          </article>
+
+          <article class="program-card">
+            <div class="program-icon">🐓</div>
+            <h3>Poultry & Livestock Support</h3>
+            <p>Encouraging income generation and food security through poultry keeping and related livestock production activities.</p>
+          </article>
+
+          <article class="program-card">
+            <div class="program-icon">🐝</div>
+            <h3>Beekeeping</h3>
+            <p>Supporting practical beekeeping initiatives that can improve household livelihoods and strengthen local enterprise.</p>
+          </article>
+
+          <article class="program-card">
+            <div class="program-icon">🦗</div>
+            <h3>Cricket Farming</h3>
+            <p>Exploring innovative farming approaches that support nutrition, enterprise development, and economic empowerment.</p>
+          </article>
+
+          <article class="program-card">
+            <div class="program-icon">💧</div>
+            <h3>Water & Sanitation</h3>
+            <p>Advancing healthier communities through improved sanitation awareness, safe water practices, and hygiene-focused initiatives.</p>
+          </article>
+
+          <article class="program-card">
+            <div class="program-icon">🤝</div>
+            <h3>Support for Vulnerable People</h3>
+            <p>Assisting vulnerable children, elderly persons, and other community members who need social care and practical support.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="impact">
+      <div class="container impact">
+        <div>
+          <span class="pill">Impact and growth</span>
+          <h2 class="section-title">Show your progress clearly to members, partners, and donors</h2>
+          <p class="section-subtitle">
+            Replace the sample figures below with your real numbers once you gather them. This section helps visitors
+            quickly understand your reach and achievements.
+          </p>
+
+          <div class="impact-cards">
+            <div class="metric">
+              <strong>25+</strong>
+              <span>Members involved in community activities</span>
+            </div>
+            <div class="metric">
+              <strong>6</strong>
+              <span>Core program areas currently highlighted</span>
+            </div>
+            <div class="metric">
+              <strong>3+</strong>
+              <span>Active community projects to showcase</span>
+            </div>
+            <div class="metric">
+              <strong>2025</strong>
+              <span>Registered and ready for structured growth</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>Example project highlight</strong>
+            Tree nursery development and community environmental action to support long-term sustainability.
+          </div>
+          <div class="timeline-item">
+            <strong>Example social support highlight</strong>
+            Community support and outreach for vulnerable children and elderly persons.
+          </div>
+          <div class="timeline-item">
+            <strong>Example livelihood highlight</strong>
+            Poultry, beekeeping, and farming activities aimed at improving household income and food security.
+          </div>
+          <div class="timeline-item">
+            <strong>Tip for this section</strong>
+            Add real outcomes here, such as seedlings raised, households reached, sanitation activities completed,
+            or training sessions held.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery" style="background:linear-gradient(180deg, rgba(247,250,248,0), rgba(237,248,242,.55));">
+      <div class="container">
+        <span class="pill">Gallery</span>
+        <h2 class="section-title">Add real photos that tell your community story</h2>
+        <p class="section-subtitle">
+          The first card uses your current brochure. The others are ready for photos of projects, meetings, beneficiaries,
+          farming activities, and outreach events.
+        </p>
+
+        <div class="gallery-grid">
+          <article class="gallery-card">
+            <div class="gallery-media">
+              <img src="assets/brochure.jpg" alt="Community brochure showcase" />
+            </div>
+            <div class="gallery-caption">
+              <strong>Organisation overview</strong>
+              <span>Your brochure can be used as a quick visual summary of your work.</span>
+            </div>
+          </article>
+
+          <article class="gallery-card">
+            <div class="gallery-media">Add poultry or farming photo</div>
+            <div class="gallery-caption">
+              <strong>Livelihood projects</strong>
+              <span>Replace with a real image from poultry, beekeeping, or farming activities.</span>
+            </div>
+          </article>
+
+          <article class="gallery-card">
+            <div class="gallery-media">Add sanitation or outreach photo</div>
+            <div class="gallery-caption">
+              <strong>Community outreach</strong>
+              <span>Show water, sanitation, or support work taking place in the community.</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="documents">
+      <div class="container">
+        <span class="pill">Documents</span>
+        <h2 class="section-title">Build trust by displaying your official documents</h2>
+        <p class="section-subtitle">
+          This section helps partners and donors confirm your registration and governance structure.
+          You can later replace image links with PDF files if you want downloadable versions.
+        </p>
+
+        <div class="docs-grid">
+          <article class="doc-card">
+            <img src="assets/registration-certificate.jpg" alt="Registration certificate" />
+            <div class="doc-body">
+              <h3>Registration Certificate</h3>
+              <p>Official registration image based on the document you shared.</p>
+              <a class="btn btn-secondary" href="assets/registration-certificate.jpg" target="_blank">View document</a>
+            </div>
+          </article>
+
+          <article class="doc-card">
+            <img src="assets/constitution-page-1.jpg" alt="Constitution page" />
+            <div class="doc-body">
+              <h3>Constitution</h3>
+              <p>Preview of your constitution page. Replace with a full PDF later for easier reading.</p>
+              <a class="btn btn-secondary" href="assets/constitution-page-1.jpg" target="_blank">View document</a>
+            </div>
+          </article>
+
+          <article class="doc-card">
+            <img src="assets/logo.jpg" alt="Organisation logo" />
+            <div class="doc-body">
+              <h3>Identity & Branding</h3>
+              <p>Your logo can be used across the website, letterheads, posters, and social media pages.</p>
+              <a class="btn btn-secondary" href="assets/logo.jpg" target="_blank">View logo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="leadership" style="background:linear-gradient(180deg, rgba(237,248,242,.55), rgba(247,250,248,0));">
+      <div class="container">
+        <span class="pill">Leadership</span>
+        <h2 class="section-title">Add your office bearers</h2>
+        <p class="section-subtitle">
+          The constitution mentions these positions. Replace the placeholder names with the actual office bearers.
+        </p>
+
+        <div class="leaders">
+          <div class="leader">
+            <div class="avatar">C</div>
+            <strong>Chairperson</strong>
+            <span>Add name here</span>
+            <em>Leadership role</em>
+          </div>
+          <div class="leader">
+            <div class="avatar">V</div>
+            <strong>Vice Chairperson</strong>
+            <span>Add name here</span>
+            <em>Leadership role</em>
+          </div>
+          <div class="leader">
+            <div class="avatar">S</div>
+            <strong>Secretary</strong>
+            <span>Add name here</span>
+            <em>Leadership role</em>
+          </div>
+          <div class="leader">
+            <div class="avatar">V</div>
+            <strong>Vice Secretary</strong>
+            <span>Add name here</span>
+            <em>Leadership role</em>
+          </div>
+          <div class="leader">
+            <div class="avatar">T</div>
+            <strong>Treasurer</strong>
+            <span>Add name here</span>
+            <em>Leadership role</em>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <span class="pill">Contact us</span>
+          <h2 class="section-title">Let members, donors, and partners reach you easily</h2>
+          <p class="section-subtitle">
+            Keep this section updated with the best phone number, email address, and exact meeting or office location.
+          </p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="icon-badge">📞</div>
+              <div>
+                <strong>Phone</strong>
+                <div class="muted">0725 588 590 / 0728 478 599</div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="icon-badge">📍</div>
+              <div>
+                <strong>Location</strong>
+                <div class="muted">North Kamagak, Rachuonyo South, Homa Bay County, Kenya</div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="icon-badge">✉️</div>
+              <div>
+                <strong>Email</strong>
+                <div class="muted">Replace with your official email address</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Quick inquiry form</h3>
+          <form id="contactForm">
+            <input type="text" placeholder="Your name" />
+            <input type="email" placeholder="Your email address" />
+            <input type="text" placeholder="Subject" />
+            <textarea placeholder="Write your message here"></textarea>
+            <button class="btn btn-primary" type="submit">Send message</button>
+          </form>
+          <div class="form-note">
+            This demo form is a template. To make it work online, connect it to Google Forms, Formspree,
+            Netlify Forms, or your website backend.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="muted">© <span id="year"></span> SAYE Community Development CBO. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#documents">Documents</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle?.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    document.getElementById('contactForm')?.addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('This is a template form. Connect it to Google Forms, Formspree, Netlify Forms, or your backend to receive messages.');
+    });
+  </script>
+</body>
+</html>
